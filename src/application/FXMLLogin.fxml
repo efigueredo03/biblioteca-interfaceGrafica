@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
+   <children>
+      <AnchorPane prefHeight="391.0" prefWidth="805.0">
+         <children>
+            <ImageView fitHeight="490.0" fitWidth="947.0" layoutX="-21.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../br/com/biblioteca/imagens/login.jpg" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="221.0" layoutY="43.0" prefHeight="387.0" prefWidth="363.0" style="-fx-background-color: white;">
+               <children>
+                  <TextField fx:id="tf_usuario" layoutX="30.0" layoutY="174.0" prefHeight="25.0" prefWidth="303.0" promptText="Usuário" />
+                  <Button fx:id="bt_entrar" layoutX="188.0" layoutY="324.0" mnemonicParsing="false" onAction="#botaoEntrarPressionado" prefHeight="25.0" prefWidth="145.0" text="Entrar" />
+                  <Label layoutX="31.0" layoutY="141.0" text="Usuário">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="30.0" layoutY="202.0" text="Senha">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tf_senha" layoutX="30.0" layoutY="241.0" prefHeight="25.0" prefWidth="303.0" promptText="Senha" />
+                  <Button fx:id="bt_cadastrar" layoutX="31.0" layoutY="324.0" mnemonicParsing="false" onAction="#botaoCadatrarPressionado" prefHeight="25.0" prefWidth="145.0" text="Cadastrar" />
+                  <ImageView fitHeight="96.0" fitWidth="303.0" layoutX="30.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../br/com/biblioteca/imagens/logo.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lb_status" alignment="CENTER" layoutX="30.0" layoutY="283.0" prefHeight="17.0" prefWidth="303.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
