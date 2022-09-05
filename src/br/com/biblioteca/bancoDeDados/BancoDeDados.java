@@ -42,15 +42,35 @@ public class BancoDeDados {
 		this.armazenamento.put(TipoLivro.INGLES, new ArrayList<Entidade>());
 	}	
 	
-	public boolean adicionarNoBancoDeDados(Entidade entidade) {
-		ArrayList<Entidade> armazenamento = this.armazenamento.get(entidade.getTipo());
+	public boolean verificarSeEntidadeExiste(Entidade entidade, ArrayList<Entidade> armazenamento) {
 		for (Entidade entidadeArmazenamento : armazenamento) {
 			if(entidadeArmazenamento.equals(entidade)) {
 				return false;
 			}
 		}
-		armazenamento.add(entidade);
 		return true;
 	}
 	
+	public boolean adicionarNoBancoDeDados(Entidade entidade) {
+		ArrayList<Entidade> armazenamento = this.armazenamento.get(entidade.getTipo());
+		if (!verificarSeEntidadeExiste(entidade, armazenamento)) {
+			armazenamento.add(entidade);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean removerDoBancoDeDados(Entidade entidade) {
+		ArrayList<Entidade> armazenamento = this.armazenamento.get(entidade.getTipo());
+		if (!verificarSeEntidadeExiste(entidade, armazenamento)) {
+			armazenamento.remove(entidade);
+			return true;
+		}
+		return false;
+	}
+	
+	public ArrayList<Entidade> retornarArmazenamento(Tipo tipo) {
+		return this.armazenamento.get(tipo);
+	}
+		
 }
