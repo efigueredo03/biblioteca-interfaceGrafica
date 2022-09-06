@@ -23,8 +23,8 @@ public class Servidor {
 		while(true) {
 			Socket cliente = servidor.accept();
 			System.out.println(String.format("Cliente %s conectado", cliente.getInetAddress().getHostAddress()));
-			ThreadSocket thread = new ThreadSocket(cliente);
-			listaDeClientes.add(thread, db);
+			ThreadSocket thread = new ThreadSocket(cliente, db);
+			listaDeClientes.add(thread);
 			thread.start();
 		}
 	}

@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 public abstract class Usuario extends Entidade implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private String cpf;
 	private String senha;
 	private String sexo;
 	private String nome;
@@ -16,8 +15,7 @@ public abstract class Usuario extends Entidade implements Serializable {
 	private Image avatar;
 	
 	public Usuario(String cpf, String senha, String nome, String sobrenome, String sexo, Image avatar, TipoUsuario tipo) {
-		super(tipo);
-		this.cpf = cpf;
+		super(tipo, cpf);
 		this.senha = senha;
 		this.nome = nome;
 		this.sobrenome= sobrenome;
@@ -29,16 +27,8 @@ public abstract class Usuario extends Entidade implements Serializable {
 		return senha;
 	}
 	
-	public String getCpf() {
-		return cpf;
-	}
-	
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-	
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 	
 	public String getNome() {

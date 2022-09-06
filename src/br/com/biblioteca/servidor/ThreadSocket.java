@@ -6,8 +6,13 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import br.com.biblioteca.bancoDeDados.BancoDeDados;
+import br.com.biblioteca.comandos.servidor.ComandoServidor;
+import br.com.biblioteca.comandos.servidor.ComandoServidorAdicionar;
+import br.com.biblioteca.comandos.servidor.ComandoServidorMostrar;
+import br.com.biblioteca.comandos.servidor.ComandoServidorRemover;
+import br.com.biblioteca.comandos.servidor.ComandoServidorVerificar;
+import br.com.biblioteca.comandos.servidor.SemComandoServidor;
 import br.com.biblioteca.pacote.PacoteParaServidor;
-import br.com.biblioteca.servidor.comando.ComandoServidor;
 
 public class ThreadSocket extends Thread {
 
@@ -26,34 +31,21 @@ public class ThreadSocket extends Thread {
 	public void run() {
 		try {
 			PacoteParaServidor pacote = (PacoteParaServidor) entradaPacotes.readObject();
-			
-			ComandoServidor comando = pacote.getComando();
-			
-			if(comando == ComandoServidor.ADICIONAR) {
-				db.adicionarNoBancoDeDados(pacote.getEntidade());
-			}
-			
-			if (comando == ComandoServidor.REMOVER) {
-				db.removerDoBancoDeDados(pacote.getEntidade());
-			}
-			
-			if (comando == ComandoServidor.MOSTRAR) {
-				db.retornarArmazenamento(pacote.getTipo());
-			}
-			
-			if (comando == ComandoServidor.VERIFICAR) {
-				db.verificarSeEntidadeExiste(pacote.getEntidade(), db.retornarArmazenamento(pacote.getEntidade().getTipo()));
-			}
-			
-			
-			
-			
-			
+			executarComando(pacote);	
 		} catch (ClassNotFoundException | IOException e) {
-			System.out.println("Deu merda");
+			e.printStackTrace();
 		}
 		
+	}
+	
+	private void executarComando(PacoteParaServidor pacote) throws IOException {
+		ComandoServidor cadeiaDeComandos = new ComandoServidorAdicionar(db, saidaPacotes,
+				new ComandoServidorRemover(db, saidaPacotes, 
+						new ComandoServidorVerificar(db, saidaPacotes, 
+								new ComandoServidorMostrar(db, saidaPacotes, 
+										new SemComandoServidor()))));
 		
+		cadeiaDeComandos.verificarComando(pacote);
 	}
 	
 }

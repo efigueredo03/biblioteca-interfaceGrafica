@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="177.0" prefWidth="491.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DadosInsuficientesController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="131.0" fitWidth="128.0" layoutX="26.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../br/com/biblioteca/imagens/atencao.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label layoutX="185.0" layoutY="40.0" prefHeight="32.0" prefWidth="266.0" text="Preencha todos os campos">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="bt_ok" layoutX="218.0" layoutY="107.0" mnemonicParsing="false" onAction="#okPress" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 30; -fx-background-color: C7ECFF;" text="Ok" />
+   </children>
+</Pane>

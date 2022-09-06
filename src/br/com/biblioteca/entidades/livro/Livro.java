@@ -4,17 +4,16 @@ import br.com.biblioteca.entidades.Entidade;
 
 public class Livro extends Entidade {
 	
+	private static final long serialVersionUID = 1L;
 	private String titulo;
 	private String autor;
 	private String data;
-	private long id;
 
-	public Livro(String titulo, String autor, String data, int id, TipoLivro tipo) {
-		super(tipo);
+	public Livro(String titulo, String autor, String data, String id, TipoLivro tipo) {
+		super(tipo, id);
 		this.titulo = titulo;
 		this.autor = autor;
 		this.data = data;
-		this.id = id;
 	}
 	
 	public String getTitulo() {
@@ -39,14 +38,6 @@ public class Livro extends Entidade {
 	
 	public void setData(String data) {
 		this.data = data;
-	}
-	
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 }
